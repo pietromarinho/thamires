@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para Você 💖</title>
+    <style>
+      /* Reset básico */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(to right, #ff758c, #ff7eb3);
+        font-family: "Arial", sans-serif;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      .start-page,
+      .main-page {
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .start-page h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .start-button {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid white;
+        color: white;
+        font-size: 1.2rem;
+        padding: 15px 30px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .start-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      .start-button:active {
+        transform: scale(0.95);
+      }
+
+      .main-page {
+        display: none; /* Esconde a página principal inicialmente */
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .music {
+        margin-bottom: 20px;
+      }
+
+      iframe {
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        height: 80px;
+      }
+
+      .slideshow-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%; /* Proporção 1:1 (quadrado) */
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        cursor: pointer; /* Mostra que o carrossel é clicável */
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .romantic-text {
+        margin-top: 20px;
+        font-size: 1rem;
+        line-height: 1.5;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsividade */
+      @media (max-width: 480px) {
+        .romantic-text {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Animação de transição */
+      .fade-out {
+        animation: fadeOut 1s ease forwards;
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Página Inicial -->
+    <div class="start-page">
+      <h1>Fiz especialmente pra tu, porque você é a pessoa que eu mais amo.</h1>
+      <button class="start-button" onclick="startExperience()">
+        <p>Clique aqui</p>
+        <p>(quando clicar, da play na música kk)</p>
+      </button>
+    </div>
+
+    <!-- Página Principal (inicialmente escondida) -->
+    <div class="main-page">
+      <div class="container">
+        <!-- Player do Spotify no topo -->
+        <div class="music">
+          <iframe
+            id="spotifyPlayer"
+            src="https://open.spotify.com/embed/track/7loqgGJ4JFHjNHOyg5zDpA?utm_source=generator"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          ></iframe>
+        </div>
+
+        <!-- Carrossel de imagens -->
+        <div class="slideshow-container" onclick="nextSlide()">
+          <img class="slide active" src="fotos/foto_1.jpg" alt="Foto 1" />
+          <img class="slide" src="fotos/foto_2.jpg" alt="Foto 2" />
+          <img class="slide" src="fotos/foto_3.jpg" alt="Foto 3" />
+          <img class="slide" src="fotos/foto_4.jpg" alt="Foto 4" />
+          <img class="slide" src="fotos/foto_5.jpg" alt="Foto 5" />
+          <img class="slide" src="fotos/foto_6.jpg" alt="Foto 6" />
+          <img class="slide" src="fotos/foto_7.jpg" alt="Foto 7" />
+          <img class="slide" src="fotos/foto_8.jpg" alt="Foto 8" />
+          <img class="slide" src="fotos/foto_9.jpg" alt="Foto 9" />
+          <img class="slide" src="fotos/foto_10.jpg" alt="Foto 10" />
+          <img class="slide" src="fotos/foto_11.jpg" alt="Foto 11" />
+          <img class="slide" src="fotos/foto_12.jpg" alt="Foto 12" />
+          <img class="slide" src="fotos/foto_13.jpg" alt="Foto 13" />
+          <img class="slide" src="fotos/foto_14.jpg" alt="Foto 14" />
+          <img class="slide" src="fotos/foto_15.jpg" alt="Foto 15" />
+          <img class="slide" src="fotos/foto_16.jpg" alt="Foto 16" />
+          <img class="slide" src="fotos/foto_17.jpg" alt="Foto 17" />
+          <img class="slide" src="fotos/foto_18.jpg" alt="Foto 18" />
+          <img class="slide" src="fotos/foto_19.jpg" alt="Foto 19" />
+          <img class="slide" src="fotos/foto_20.jpg" alt="Foto 20" />
+          <img class="slide" src="fotos/foto_21.jpg" alt="Foto 21" />
+          <img class="slide" src="fotos/foto_22.jpg" alt="Foto 22" />
+          <img class="slide" src="fotos/foto_23.jpg" alt="Foto 23" />
+        </div>
+
+        <!-- Texto romântico -->
+        <div class="romantic-text">
+          <p>
+            Meu amor, cada dia ao seu lado é como uma nova página do nosso conto
+            de fadas. Você é a razão do meu sorriso, a luz que ilumina meus dias
+            e o amor que preenche meu coração. A cada momento, eu me apaixono
+            mais por você, pela sua beleza, pela sua essência e por tudo o que
+            você é. Você é o meu hoje, o meu amanhã e o meu sempre. Eu te amo
+            mais do que as palavras podem expressar. 💖
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      let slides = document.querySelectorAll(".slide");
+      let slideInterval;
+
+      function startExperience() {
+        // Adiciona a animação de fade-out na página inicial
+        document.querySelector(".start-page").classList.add("fade-out");
+
+        // Mostra a página principal após a animação
+        setTimeout(() => {
+          document.querySelector(".start-page").style.display = "none";
+          document.querySelector(".main-page").style.display = "block";
+        }, 1000); // Tempo da animação (1 segundo)
+
+        // Inicia o carrossel de fotos automaticamente
+        slideInterval = setInterval(nextSlide, 1500);
+      }
+
+      function nextSlide() {
+        slides[slideIndex].classList.remove("active");
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add("active");
+      }
+
+      // Adiciona o evento de clique ao carrossel
+      document
+        .querySelector(".slideshow-container")
+        .addEventListener("click", () => {
+          nextSlide();
+          resetTimer(); // Reinicia o timer ao clicar
+        });
+
+      function resetTimer() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 1500);
+      }
+    </script>
+  </body>
+</html>
